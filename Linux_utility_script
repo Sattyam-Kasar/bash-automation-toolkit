@@ -1,0 +1,60 @@
+#!/bin/bash
+
+while true
+do
+    echo "=============================="
+    echo "   MENU-DRIVEN LINUX TOOL"
+    echo "=============================="
+    echo "1. System Information"
+    echo "2. Disk Usage"
+    echo "3. File Operations"
+    echo "4. Running Processes"
+    echo "5. Exit"
+    echo "=============================="
+    echo "Enter your choice:"
+    read choice
+
+    case $choice in
+        1)
+            echo "System Information"
+            uname -a
+            ;;
+        2)
+            echo "Disk Usage"
+            df -h
+            ;;
+        3)
+            echo "File Operations"
+            echo "a) Create file"
+            echo "b) Delete file"
+            read op
+            case $op in
+                a)
+                    echo "Enter filename:"
+                    read fname
+                    touch "$fname"
+                    echo "File created"
+                    ;;
+                b)
+                    echo "Enter filename:"
+                    read fname
+                    rm -i "$fname"
+                    ;;
+            esac
+            ;;
+        4)
+            echo "Running Processes"
+            ps -ef | head
+            ;;
+        5)
+            echo "Exiting..."
+            exit 0
+            ;;
+        *)
+            echo "Invalid option"
+            ;;
+    esac
+
+    echo "Press Enter to continue..."
+    read
+done
